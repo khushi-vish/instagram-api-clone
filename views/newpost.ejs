@@ -1,0 +1,40 @@
+<%- include("include/head.ejs") %>
+<h2>
+<a href="http://localhost:3000/<%=username%>"><i class="fa-solid fa-angle-left" title="Back"></i></a>  Add new post</h2>
+<hr>
+<br>
+    <form method="post" action="/<%=username%>">
+      <label for="link">Img Link:</label>
+      <input
+        type="url"
+        id="link"
+        placeholder="write image link"
+        name="imgUrl"
+      /><br /><br />
+
+      <label for="likes">Likes:</label>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input
+        type="number"
+        id="likes"
+        placeholder="how many links"
+        name="likes"
+      /><br /><br />
+
+      <label for="comment">Comments:</label>
+
+      <input
+        type="number"
+        placeholder="how many comments"
+        name="comment"
+        id="comment"
+      /><br /><br />
+
+      <label for="caption">Caption:</label>
+      &nbsp;&nbsp;
+      <textarea name="caption" id="caption" placeholder="write a caption"></textarea
+      ><br /><br />
+      <button>submit</button>
+    </form>
+  </body>
+</html>

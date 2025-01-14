@@ -1,0 +1,25 @@
+<%- include("include/head.ejs") %>
+<h2>
+<a href="http://localhost:3000/"><i class="fa-solid fa-angle-left" title="Back"></i></a>  Add new profile</h2>
+<hr>
+<br>
+        <form method="post" action="/" style="padding: 20px">
+        <label for="pic">Pic Link: </label>
+        <input type="url" id="pic" name="picUrl" /><br /><br />
+
+        <label for="username">username: </label>
+        <input type="text" id="username" name="username" /><br /><br />
+
+        <label for="follower">followers: </label>
+        <input type="number" id="follower" name="followers" /><br /><br />
+
+        <label for="following">following: </label>
+        <input type="number" id="following" name="following" /><br /><br />
+
+        <label for="description">description: </label>
+        <textarea name="description" id="description"></textarea><br /><br />
+
+        <button>submit</button>
+        </form>
+    </body>
+</html>

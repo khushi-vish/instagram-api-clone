@@ -1,0 +1,24 @@
+<%- include("include/head.ejs") %>
+<h2>
+<a href="http://localhost:3000/<%= username %>"><i class="fa-solid fa-angle-left" title="Back"></i></a>  Edit your Profile</h2>
+<hr>
+<br>
+    <form method="post" action="/<%= username %>?_method=PATCH" style="padding: 0 20px 20px 20px;">
+      <h2><%=username.toUpperCase()%></h2>
+        <label for="pic">Pic Link: </label>
+        <input type="url" id="pic" name="picUrl"  value="<%=user.picUrl%>"/><br /><br />
+
+        <label for="follower">followers: </label>
+        <input type="number" id="follower" name="followers"  value="<%=user.followers%>"/><br /><br />
+
+        <label for="following">following: </label>
+        <input type="number" id="following" name="following" value="<%=user.following%>" /><br /><br />
+
+        <label for="description">description: </label>
+        <textarea name="description" id="description"><%=user.description%></textarea><br /><br />
+
+        <button>submit</button>
+      </form>
+  </body>
+</html>
+
