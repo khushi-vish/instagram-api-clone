@@ -156,6 +156,17 @@ app.patch("/:username", (req, res) => {
   res.redirect(`/${username}`);
 });
 
+app.delete("/:username", (req, res) => {
+  let { username } = req.params;
+  let user = userProfiles.find((user) => user.username === username);
+  if (!user) {
+    console.error(`user with username : ${username} not found`);
+    return res.status(404).send("user not found");
+  }
+  userProfiles = userProfiles.filter((user) => user.username !== username);
+  res.redirect(`/`);
+});
+
 app.get("/:username/:id", (req, res) => {
   let { username, id } = req.params;
   let user = userProfiles.find((user) => user.username === username);
@@ -213,6 +224,8 @@ app.delete("/:username/:id", (req, res) => {
   // console.log(`after removing : ${JSON.stringify(posts)}`);
   res.redirect(`/${username}`);
 });
+
+// QUICK POSTS/PROFILES==============================================
 
 // SERVER START=====================================================
 app.listen(port, () => {

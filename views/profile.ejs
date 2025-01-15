@@ -18,7 +18,7 @@
                     <i class="fa-solid fa-circle-check"></i>
                 </span>
                 <span>
-                    <form style="display: inline;"  method="post" action="http://localhost:3000/?_method=DELETE" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                    <form style="display: inline;"  method="post" action="http://localhost:3000/<%=user.username%>?_method=DELETE" onsubmit="return confirm('Are you sure you want to delete this post?');">
                         <button style="border: none; background-color: transparent; box-shadow: none;"
                         >
                             <i class="fa-solid fa-trash-can edit-icon" style="font-size: 17px;"></i>

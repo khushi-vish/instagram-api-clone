@@ -1,23 +1,40 @@
 <%- include("include/head.ejs") %>
-    <h1 style="display: flex; justify-content: space-between;">
-        All Profiles 
-        <a href="http://localhost:3000/new" class="add-icon" title="add a new profile">+</a>
+    <h1 style="display: flex; justify-content: space-between">
+      All Profiles
+      <span>
+        <a
+          href="http://localhost:3000/new"
+          class="add-icon"
+          title="add a new profile"
+          >+
+        </a>
+      </span>
     </h1>
-    <hr>
+    <hr />
     <% for(profile of userProfiles){ %>
-        <img src="<%= profile.picUrl %>" alt="username" width="100" height="100" onerror="
+    <img
+      src="<%= profile.picUrl %>"
+      alt="username"
+      width="100"
+      height="100"
+      style="border-radius: 50%"
+      onerror="
                 this.onerror=null;
                 this.src=`/assets/default.png`;
                 alert(`your image link is broken, please update it`);
-            ">
-        <br>
-        <a href="http://localhost:3000/<%=profile.username%>" style="font-size: 20px; font-family: Arial, Helvetica, sans-serif;">@<%=profile.username%>
-        </a>
-        <p> <span class="number"><%= profile.followers %></span> followers  
-            <span class="number"><%= profile.following %></span>   following 
-        </p>
-        <hr>
+            "
+    />
+    <br />
+    <a
+      href="http://localhost:3000/<%=profile.username%>"
+      style="font-size: 20px; font-family: Arial, Helvetica, sans-serif"
+      >@<%=profile.username%>
+    </a>
+    <p>
+      <span class="number"><%= profile.followers %></span> followers
+      <span class="number"><%= profile.following %></span> following
+    </p>
+    <hr />
     <%}%>
-</body>
+  </body>
 </html>
-
