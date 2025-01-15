@@ -12,11 +12,14 @@ This project is an Instagram API clone built using Node.js and Express. It provi
 - **RESTful API**: Designed according to REST principles, utilizing HTTP methods like GET, POST, PATCH, DELETE.
 - **Temporary Data Storage**: Uses arrays to store data temporarily; future plans include integrating a database for persistent storage.
 
+## Prerequisites
+- Install [Node.js](https://nodejs.org/) globally.
+
 ## Usage
 To run the project locally:
 1. Clone this repository.
 2. Install dependencies using `npm install`.
-3. Start the server with `node index.js` or `npm start`.
+3. Start the server with `node index.js`.
 4. Access the API endpoints using tools like Postman or directly through frontend applications.
 
 ## Future Enhancements
