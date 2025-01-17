@@ -6,7 +6,8 @@
     <form method="post" action="/<%= username %>?_method=PATCH" style="padding: 0 20px 20px 20px;">
       <h2><%=username.toUpperCase()%></h2>
         <label for="pic">Pic Link: </label>
-        <input type="url" id="pic" name="picUrl"  value="<%=user.picUrl%>"/><br /><br />
+        <input type="url" id="pic" name="picUrl"  value="<%=user.picUrl%>"/>
+        <button class="def" type="button">default img</button><br /><br />
 
         <label for="follower">followers: </label>
         <input type="number" id="follower" name="followers"  value="<%=user.followers%>"/><br /><br />
@@ -17,8 +18,17 @@
         <label for="description">description: </label>
         <textarea name="description" id="description"><%=user.description%></textarea><br /><br />
 
-        <button>submit</button>
+        <button type="submit">submit</button>
       </form>
+      <script>
+        const def = document.querySelector(".def");
+        const input = document.querySelector("#pic");
+        let pic = "<%=pic%>";
+
+        def.addEventListener("click", () => {
+          input.value = pic;
+        })
+      </script>
   </body>
 </html>
 

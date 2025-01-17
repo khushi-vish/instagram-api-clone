@@ -10,7 +10,9 @@
         id="link"
         placeholder="write image link"
         name="imgUrl"
-      /><br /><br />
+      />
+      <button type="button" class="random">random img</button>
+      <br /><br />
 
       <label for="likes">Likes:</label>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -36,5 +38,14 @@
       ><br /><br />
       <button>submit</button>
     </form>
+    <script>
+        const random = document.querySelector(".random");
+        const input = document.querySelector("#link");
+        let pic = "<%=postpic%>";
+
+        random.addEventListener("click", () => {
+          input.value = pic;
+        })
+      </script>
   </body>
 </html>

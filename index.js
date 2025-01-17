@@ -5,6 +5,9 @@ const port = 3000;
 const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
+// additional packages for data
+const { faker } = require("@faker-js/faker");
+const coolImages = require("cool-images");
 const { v4: uuidv4 } = require("uuid");
 
 // set view engine for ejs
@@ -20,6 +23,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// VARIABLES===================================================
+
+let pic = faker.image.avatar();
+let postpic = coolImages.one();
+
 // LOGIC=======================================================
 let userProfiles = [
   {
@@ -33,35 +41,35 @@ let userProfiles = [
     posts: [
       {
         id: uuidv4(),
-        imgUrl: "https://random.imagecdn.app/500/150",
+        imgUrl: coolImages.one(),
         likes: 300,
         comment: 300,
         caption:
-          "i am lovin iti am lovin iti am lovin iti am lovin iti am lovin iti am lovin iti am lovin iti am lovin it",
+          "Life isn't about finding yourself. Life is about creating yourself. — George Bernard Shaw 🌟",
       },
       {
         id: uuidv4(),
-        imgUrl: "https://random.imagecdn.app/500/150",
+        imgUrl: coolImages.one(),
         likes: 300,
         comment: 300,
         caption:
-          "i am lovin iti am lovin iti am lovin iti am lovin iti am lovin iti am lovin iti am lovin iti am lovin it",
+          "Sometimes the smallest step in the right direction ends up being the biggest step of your life. Tip toe if you must, but take the step 🌍",
       },
       {
         id: uuidv4(),
-        imgUrl: "https://random.imagecdn.app/500/150",
+        imgUrl: coolImages.one(),
         likes: 300,
         comment: 300,
         caption:
-          "i am lovin iti am lovin iti am lovin iti am lovin iti am lovin iti am lovin iti am lovin iti am lovin it",
+          "Success is not final, failure is not fatal: it is the courage to continue that counts. — Winston Churchill🔥",
       },
       {
         id: uuidv4(),
-        imgUrl: "https://random.imagecdn.app/500/150",
+        imgUrl: coolImages.one(),
         likes: 300,
         comment: 300,
         caption:
-          "i am lovin iti am lovin iti am lovin iti am lovin iti am lovin iti am lovin iti am lovin iti am lovin it",
+          "Every day may not be good, but there's something good in every day. Look for it.☀️",
       },
     ],
   },
@@ -88,7 +96,7 @@ app.post("/", (req, res) => {
 });
 
 app.get("/new", (req, res) => {
-  res.render("newprofile.ejs");
+  res.render("newprofile.ejs", { pic });
 });
 
 app.get("/:username", (req, res) => {
@@ -106,7 +114,7 @@ app.get("/:username", (req, res) => {
 
 app.get("/:username/new", (req, res) => {
   let { username } = req.params;
-  res.render("newpost.ejs", { username });
+  res.render("newpost.ejs", { username, postpic });
 });
 
 app.post("/:username", (req, res) => {
@@ -131,7 +139,7 @@ app.get("/:username/edit", (req, res) => {
     console.error(`user with username ${username} not found`);
     return res.status(404).send("user not found");
   }
-  res.render("editprofile.ejs", { username, user });
+  res.render("editprofile.ejs", { username, user, pic });
 });
 
 app.patch("/:username", (req, res) => {
@@ -184,7 +192,7 @@ app.get("/:username/:id/edit", (req, res) => {
   let user = userProfiles.find((profile) => profile.username === username);
   let posts = user.posts;
   let post = posts.find((p) => p.id == id);
-  res.render("editpost", { user, post });
+  res.render("editpost", { user, post, postpic });
 });
 
 app.patch("/:username/:id", (req, res) => {
