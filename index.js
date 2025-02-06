@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const port =  process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
@@ -22,6 +22,13 @@ app.use(express.static(path.join(__dirname, "public")));
 // to parse incoming data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use((req, res, next) => {
+  if (req.headers["x-forwarded-proto"] !== "https") {
+    return res.redirect("https://" + req.headers.host + req.url);
+  }
+  next();
+});
 
 // VARIABLES===================================================
 
