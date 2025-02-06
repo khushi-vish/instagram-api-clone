@@ -24,11 +24,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use((req, res, next) => {
-  if (req.protocol !== "https" && process.env.NODE_ENV === "production") {
-    return res.redirect("https://" + req.headers.host + req.url);
+  if (
+    req.headers["x-forwarded-proto"] !== "https" &&
+    process.env.NODE_ENV === "production"
+  ) {
+    return res.redirect(301, "https://" + req.headers.host + req.url);
   }
   next();
 });
+
 // VARIABLES===================================================
 
 let pic = faker.image.avatar();
