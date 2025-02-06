@@ -1,5 +1,5 @@
 <%- include("include/head.ejs") %>
-<h2><a href="http://localhost:3000/<%=user.username%>/<%=post.id%>"><i class="fa-solid fa-angle-left" title="Back"></i></a>    Edit your Post</h2>
+<h2><a href="/<%=user.username%>/<%=post.id%>"><i class="fa-solid fa-angle-left" title="Back"></i></a>    Edit your Post</h2>
 <hr>
 <br>
     <form method="post" action="/<%=user.username%>/<%=post.id%>?_method=PATCH">
